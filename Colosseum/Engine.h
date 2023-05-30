@@ -16,6 +16,8 @@ public:
 	int rollDie(int maxRoll);
 
 	int selector(std::string prompt, std::string options[], int optionsLen);
+
+	int quitGame();
 };
 
 

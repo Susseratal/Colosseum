@@ -16,12 +16,15 @@ private:
 	int maxHp;
 	int currentHp;
 	int armourClass;
-	int strength;
-	int dexterity;
-	int constitution;
-	int intelligence;
-	int wisdom;
-	int charisma;
+
+	map<string, int> i_skillPoints = {
+		{"Strength", 0},
+		{"Dexterity", 0},
+		{"Constitution", 0},
+		{"Intelligence", 0},
+		{"Wisdom", 0},
+		{"Charisma", 0},
+	};
 
 public:
 	int level;

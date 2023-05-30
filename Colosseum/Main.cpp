@@ -10,8 +10,8 @@ int main()
     Engine* engine = new Engine();
     Character* player = new Character();
 
-    // cout << "Welcome to the colosseum " << player->getName() << "!\n";
-    return 0;
+    int exitStatus = engine->quitGame();
+    return exitStatus;
 }
 
 /*
@@ -21,11 +21,11 @@ int main()
  The player gains XP and gold
  When the player levels up, they can choose to increase skills for better luck during rolls
 * MVP:
-    - Create a character
-    - Character gets serialised and saved
-    - Fight against enemies in the colosseum
-        - 5 enemies available
-    - level up skills
+    - [x] Create a character
+    - [ ] Character gets serialised and saved
+    - [ ] Fight against enemies in the colosseum
+        - [ ] 5 enemies available
+    - [ ] level up skills
 
 * PUSH:
     - buy new weapons and armour

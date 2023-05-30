@@ -29,7 +29,6 @@ void Character::createCharacter() {
     optionsLen = sizeof(raceArray)/sizeof(raceArray[0]);
     choiceIndex = engine->selector((title + "\nChoose your race: "), raceArray, optionsLen);
 	race = raceArray[choiceIndex];
-
 	tmpRow = "Race: " + race + "\n";
 	title.append(tmpRow);
 
@@ -50,18 +49,24 @@ void Character::createCharacter() {
 	maxHp = i_defaultHealth[profession];
 	currentHp = maxHp;
 
+	title = "\t========== ALLOCATE POINTS ==========\n"; 
+
 	string pointsArray[6] = { "8", "10", "12", "13", "14", "15" };
+	optionsLen = sizeof(pointsArray) / sizeof(professionArray[0]);
+	string prompt;
 
-	do {
-		optionsLen = sizeof(pointsArray) / sizeof(professionArray[0]);
-		choiceIndex = engine->selector((title + "\nAllocate points to {SKILL}: "), pointsArray, optionsLen);
+	for (map<string, int>::iterator iterator = i_skillPoints.begin(); iterator != i_skillPoints.end(); iterator++) { 
+		prompt = "\nAllocate points to " + iterator->first;
+		choiceIndex = engine->selector((title + prompt), pointsArray, optionsLen);
+		int skillAllocation = stoi(pointsArray[choiceIndex]);
 
-		for (int i = choiceIndex; i < optionsLen; i++) {
-			pointsArray[i] = pointsArray[i + 1];
+		i_skillPoints[iterator->first] = skillAllocation; 
+
+		for (int j = choiceIndex; j < optionsLen - 1; j++) {
+			pointsArray[j] = pointsArray[j + 1];
 		}
-	} while (optionsLen > 0);
-
-
+		--optionsLen;
+	}
 	readCharacterSheet();
 }
 
@@ -72,16 +77,13 @@ string Character::getName() {
 void Character::readCharacterSheet() {
 	system("cls");
 	cout << "\t========== CHARACTER SHEET ==========\n"; 
-	cout << "Name: " << name;
-	cout << "\nRace: " << race;
-	cout << "\nClass: " << profession;
-	cout << "\nLevel: " << level;
-	cout << "\nHP: " << currentHp << "/" << maxHp;
-	cout << "\nStrength: " << strength;
-	cout << "\nDexterity: " << dexterity;
-	cout << "\nConstitution: " << constitution;
-	cout << "\nIntelligence: " << intelligence;
-	cout << "\nWisdom: " << wisdom;
-	cout << "\nCharisma: " << charisma;
-	cout << "\n";
+	cout << "Name: " << name << "\n";
+	cout << "Race: " << race << "\n";
+	cout << "Class: " << profession << "\n";
+	cout << "Level: " << level << "\n";
+	cout << "HP: " << currentHp << "/" << maxHp << "\n";
+
+	for (map<string, int>::iterator iterator = i_skillPoints.begin(); iterator != i_skillPoints.end(); iterator++) {
+		cout << iterator->first << ": " << iterator->second << "\n";
+	}
 }

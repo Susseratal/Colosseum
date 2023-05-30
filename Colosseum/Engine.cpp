@@ -84,7 +84,7 @@ int Engine::selector(string prompt, string options[], int optionsLen) {
             break;
 
         case KEY_DOWN:
-            if (selected < optionsLen) { // don't increment if we're at the last option
+            if (selected < optionsLen - 1) { // don't increment if we're at the last option
                 selected++;
                 updated = true;
             }
@@ -100,5 +100,12 @@ int Engine::selector(string prompt, string options[], int optionsLen) {
     } while (selecting);
 
     return(selected);
+}
+
+int Engine::quitGame() {
+    cout << "Press return to quit...";
+    _getch();
+    system("cls");
+    return 0;
 }
 
