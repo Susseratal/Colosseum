@@ -1,0 +1,5 @@
+.vs
+*.zip
+*.swp
+x64/
+Casino/x64/
