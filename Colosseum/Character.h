@@ -17,6 +17,7 @@ private:
 	int currentHp;
 	int armourClass;
 
+	// Should be updated to use a vector or a list to stop it sorting alphabetically I hate this stupid language
 	map<string, int> i_skillPoints = {
 		{"Strength", 0},
 		{"Dexterity", 0},
