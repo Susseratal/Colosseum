@@ -8,7 +8,32 @@ int main()
 {
     system("cls");
     Engine* engine = new Engine();
-    Character* player = new Character();
+
+    Engine::status result = engine->rollDie(13);
+    // Character* player = new Character();
+
+    switch (result) {
+    case Engine::status::success:
+        cout << "success\n";
+        break;
+
+    case Engine::status::failure:
+        cout << "failure\n";
+        break;
+
+    case Engine::status::criticalSuccess:
+        cout << "critical success\n";
+        break;
+
+    case Engine::status::criticalFailure:
+        cout << "critical failure\n";
+        break;
+
+    default:
+        cout << "Invalid output\n";
+        break;
+    }
+
 
     int exitStatus = engine->quitGame();
     return exitStatus;

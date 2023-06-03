@@ -50,8 +50,32 @@ string Engine::toUpper(string s) {
 	return returnstr;
 }
 
-int Engine::rollDie(int maxRoll) {
-	return rand() % maxRoll + 1;
+Engine::status Engine::rollDie(int threshold) {
+    status success;
+    int total = 0;
+    int roll = 0;
+
+    for (int i = 0; i < 3; i++) {
+        roll = rand() % 6 + 1;
+        total += roll;
+    };
+    
+    cout << total << "\n";
+
+    if (total == 3 || total == 4) {
+        success = status::criticalFailure;
+    }
+    else if (total == 17 || total == 18) {
+        success = status::criticalSuccess;
+    }
+    else if (total <= threshold) {
+        success = status::success;
+    }
+    else { // should obnly trigger if total is greater than threshold but isn't 17 or 18
+        success = status::failure;
+    }
+
+    return success;
 }
 
 int Engine::selector(string prompt, string options[], int optionsLen) {
@@ -100,6 +124,14 @@ int Engine::selector(string prompt, string options[], int optionsLen) {
     } while (selecting);
 
     return(selected);
+}
+
+void Engine::saveGame() {
+    // Do this later
+}
+
+void Engine::loadGame() {
+    cout << "Load\n";
 }
 
 int Engine::quitGame() {
