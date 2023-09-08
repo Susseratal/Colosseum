@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\SDK\glad\include;C:\SDK\glfw-3.3.8\include;C:\SDK\glew-2.1.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\SDK\glfw-3.3.8\lib;C:\SDK\glew-2.1.0\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDK\freetype\include;C:\SDK\glad\include;C:\SDK\glfw-3.3.8\include;C:\SDK\glew-2.1.0\include;C:\SDK\glm;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDK\freetype;C:\SDK\glfw-3.3.8\lib;C:\SDK\glew-2.1.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,7 +112,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);opengl32.lib;glfw3.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
