@@ -32,5 +32,12 @@
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="text.fs" />
+    <CopyFileToFolders Include="text.vs" />
   </ItemGroup>
 </Project>

@@ -27,5 +27,7 @@ public:
 	* @return Result -- The success or failure type
 	**/
 	RollData skillCheck(int diToRoll, int modifier, int threshold);
+
+	bool isEven(int n);
 };
 

@@ -38,3 +38,20 @@ Engine::RollData Engine::skillCheck(int diToRoll, int modifier, int threshold) {
 
 	return resultData;
 }
+
+bool Engine::isEven(int n) {
+	/*
+	if the final bit of n is 1, that means it's odd, otherwise it's even 
+	Bitwise AND only returns 1 if BOTH bits are 1
+		1011 - 11
+	  & 0001 - 1
+	  ------
+		0001 - 1
+
+		1110 - 14
+	  & 0001 - 1
+	  ------
+		0000 - 0
+	*/
+	return (!(n & 1));
+}
