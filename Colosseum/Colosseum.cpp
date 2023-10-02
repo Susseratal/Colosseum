@@ -171,7 +171,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
         string introMessage = "Welcome to the Colosseum!";
-        RenderText(shader, introMessage, (winWidth / 2), (winHeight / 2), 1.0f, glm::vec3(0.9f, 0.9f, 0.9f));
+        printString(shader, introMessage, (winWidth / 2), (winHeight / 2), 1.0f, glm::vec3(0.9f, 0.9f, 0.9f));
 
         // check and call events
         glfwPollEvents();
@@ -184,7 +184,7 @@ int main()
     return 0;
 }
 
-void RenderText(Shader& s, string text, float x, float y, float scale, glm::vec3 color) {
+void printString(Shader& s, string text, float x, float y, float scale, glm::vec3 color) {
     s.use();
     glUniform3f(glGetUniformLocation(s.ID, "textColour"), color.x, color.y, color.z);
     glActiveTexture(GL_TEXTURE);
@@ -200,6 +200,7 @@ void RenderText(Shader& s, string text, float x, float y, float scale, glm::vec3
 
         float w = l.Size.x * scale;
         float h = l.Size.y * scale;
+
 
         // update VBO for each character
         float vertices[6][4] = {
