@@ -33,7 +33,7 @@ map<GLchar, Letter> Letters;
 
 unsigned int VAO, VBO;
 
-void RenderText(Shader& s, string text, float x, float y, float scale, glm::vec3 color);
+void printString(Shader& s, string text, float x, float y, float scale, glm::vec3 color);
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -170,7 +170,7 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-        string introMessage = "Welcome to the Colosseum!";
+        string introMessage = "Hello, World!";
         printString(shader, introMessage, (winWidth / 2), (winHeight / 2), 1.0f, glm::vec3(0.9f, 0.9f, 0.9f));
 
         // check and call events
@@ -194,13 +194,11 @@ void printString(Shader& s, string text, float x, float y, float scale, glm::vec
     for (c = text.begin(); c != text.end(); c++) {
         Letter l = Letters[*c];
 
-        // THIS IS BEING CHANGED
         float xpos = x + l.Bearing.x * scale;
-        float ypos = y - ((l.Size.y - l.Bearing.y) * 0.5) * scale;
+        float ypos = y - (l.Size.y - l.Bearing.y) * scale;
 
         float w = l.Size.x * scale;
         float h = l.Size.y * scale;
-
 
         // update VBO for each character
         float vertices[6][4] = {
